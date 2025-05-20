@@ -114,7 +114,7 @@ ul li a:hover{
                     <li><a href="#">SERVICES</a></li>
                     
                     <li><a href="contactus.html">CONTACT</a></li>
-                  <li> <button class="adminbtn"><a href="adminlogin.php">ADMIN LOGIN</a></button></li>
+                  <!-- <li> <button class="adminbtn"><a href="adminlogin.php">ADMIN LOGIN</a></button></li> -->
                 </ul>
             
           

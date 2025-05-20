@@ -187,6 +187,8 @@ $num=mysqli_num_rows($queryy);
                         <th>DESTINATION</th>
                         <th>RETURN DATE</th>
                         <th>BOOKING STATUS</th>
+                        <th>TAKE METHOD</th>
+                        <th>ADDRESS</th>
                         <th>APPROVE</th>
                         <th>CAR RETURNED</th>
                     </tr>
@@ -210,6 +212,8 @@ $num=mysqli_num_rows($queryy);
                     <td><?php echo $res['DESTINATION'];?></php></td>
                     <td><?php echo $res['RETURN_DATE'];?></php></td>
                     <td><?php echo $res['BOOK_STATUS'];?></php></td>
+                    <td><?php echo $res['TAKE_METHOD'];?></php></td>
+                    <td><?php echo $res['ADDRESS'];?></php></td>
                     <td><button type="submit"  class="but"  name="approve"><a href="approve.php?id=<?php echo $res['BOOK_ID']?>">APPROVE</a></button></td>
                     <td><button type="submit" class="but" name="approve"><a href="adminreturn.php?id=<?php echo $res['CAR_ID']?>&bookid=<?php echo $res['BOOK_ID']?>">RETURNED</a></button></td>
                 </tr>

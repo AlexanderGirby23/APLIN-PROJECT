@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Details</title>
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </head>
 
 <body class="body">
@@ -35,7 +36,7 @@ body{
     width: 100%;
     height: 75px;
     margin: auto;
-    display: flex;
+    display: block;
     align-items: center;
 }
 
@@ -90,10 +91,6 @@ ul li a:hover{
 
 }
 .box{
-    
-    position:center;
-    top: 50%;
-    left: 50%;
     padding: 20px;
     box-sizing: border-box;
     background: #fff;
@@ -104,8 +101,7 @@ ul li a:hover{
     align-content: center;
     width: 600px;
     height: 200px;
-    margin-top: 100px;
-    margin-left: 350px;
+    float:left;
 }
 
 .box .imgBx{
@@ -145,6 +141,8 @@ ul li a:hover{
     cursor: pointer;
     color:#fff;
     transition: 0.4s ease;
+    text-decoration: none;
+    color:black;
 }
 
 
@@ -230,20 +228,12 @@ ul li a:hover{
     // $row=mysqli_fetch_assoc($cars);
     
     
-    ?>
-
-
-
-
-
-
+?>
 </script>
-  <div class="cd">
+<div class="cd">
     <div class="main">
         <div class="navbar">
-            <!-- <div class="icon"> -->
-                <h2 class="logo">CaRs</h2>
-            <!-- </div> -->
+            <h2 class="logo">CaRs</h2>
             <div class="menu">
                
                 <ul>
@@ -261,36 +251,49 @@ ul li a:hover{
             
             
         </div>
-      <div><h1 class="overview">OUR CARS OVERVIEW</h1>
+    <h1 class="overview">OUR CARS OVERVIEW</h1>
 
-    <ul class="de">
-    <?php
-        while($result= mysqli_fetch_array($cars))
-        {
-            // echo $result['CAR_ID'];
-            // echo $result['AVAILABLE'];
-            
-    ?>    
+    <div class="container">
+        <div class="row">
+        <?php
+            while($result= mysqli_fetch_array($cars))
+            {
+        ?>    
     
-    <li>
-    <form method="POST">
-    <div class="box">
-       <div class="imgBx">
-            <img src="images/<?php echo $result['CAR_IMG']?>">
+        <div class="col">
+            <form method="POST">
+                    <div class="card">
+                        <img src="images/<?php echo $result['CAR_IMG']?>" class="card-img-top" alt="<?php echo $result['CAR_IMG']?>" style="max-height: 200px;">
+                        <div class="card-body">
+                            <p class="card-text">Car Name : <a><?php echo $result['CAR_NAME']?></a></p>
+                            <p class="card-text">Fuel Type : <a><?php echo $result['FUEL_TYPE']?></a></p>
+                            <p class="card-text">CAPACITY : <a><?php echo $result['CAPACITY']?></a> </p>
+                            <p class="card-text">Rent Per Day : <a>₹<?php echo $result['PRICE']?>/-</a> </p>
+                            <button type="submit"  name="booknow" class="utton" style="margin-top: 5px;"><a href="booking.php?id=<?php echo $result['CAR_ID'];?>">book</a></button>
+                        </div>
+                    </div>
+                <!-- <div class="box">
+                    <div class="imgBx">
+                        <img src="">
+                    </div>
+                    <div class="content">
+                        <?php $res=$result['CAR_ID'];?>
+                        <h1><?php echo $result['CAR_NAME']?></h1>
+                        <h2>Fuel Type : <a><?php echo $result['FUEL_TYPE']?></a> </h2>
+                        <h2>CAPACITY : <a><?php echo $result['CAPACITY']?></a> </h2>
+                        <h2>Rent Per Day : <a>₹<?php echo $result['PRICE']?>/-</a></h2>
+                        <button type="submit"  name="booknow" class="utton" style="margin-top: 5px;"><a href="booking.php?id=<?php echo $res;?>">book</a></button>
+                    </div>
+                </div> -->
+            </form>
         </div>
-        <div class="content">
-            <?php $res=$result['CAR_ID'];?>
-            <h1><?php echo $result['CAR_NAME']?></h1>
-            <h2>Fuel Type : <a><?php echo $result['FUEL_TYPE']?></a> </h2>
-            <h2>CAPACITY : <a><?php echo $result['CAPACITY']?></a> </h2>
-            <h2>Rent Per Day : <a>₹<?php echo $result['PRICE']?>/-</a></h2>
-            <button type="submit"  name="booknow" class="utton" style="margin-top: 5px;"><a href="booking.php?id=<?php echo $res;?>">book</a></button>
+        <?php
+            }
+        
+        ?>
+
         </div>
-    </div></form></li>
-    <?php
-        }
-    
-    ?>
+    </div>
     <?php 
     require_once('connection.php');
         
@@ -310,43 +313,9 @@ ul li a:hover{
     
     
     ?>
-
-
-    
-
-
-    <!-- <li>
-        <div class="box">
-           <div class="imgBx">
-                <img src="images/lamborghini.webp">
-            </div>
-            <div class="content">
-                <h2>LAMBORGHINI</h2>
-                <p>It has a stuning look and its in good condition.</p>
-                <h1><a>₹15,000/-</a></h1>
-                <button class="button" ><a href="booking.html">BOOK NOW</a></button>
-            </div>
-        </div></li>
-        <li>
-            <div class="box">
-               <div class="imgBx">
-                    <img src="images/porsche.jpg ">
-                </div>
-                <div class="content">
-                    <h2>PORSCHE</h2>
-                    <p>It is a cheap and best car for the family trips. <br>
-                    </p>
-                    <h1><a>₹10,000/-</a></h1>
-                    <button class="button" ><a href="booking.html">BOOK NOW</a></button>
-                </div>
-            </div></li> -->
-            
-                
-           
-    </ul>
     </div>
   </div>
-  </div>
+</div>
     
     
 

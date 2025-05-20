@@ -165,13 +165,19 @@ input#name{
             <label>Price : </label>
             <br>
             <input type="number" name="price" min="1"
-            id="name" placeholder="Enter Price Of Car for One Day(in rupees)" required>
+            id="name" placeholder="Enter Price Of Car for One Day" required>
             <br><br>
 
             <label>Car Image : </label>
             <br>
             <input type="file" name="image" required>
-           <br><br>
+            <br><br>
+
+            <label>Late Charge : </label>
+            <br>
+            <input type="number" name="late" min="1"
+            id="name" placeholder="Enter Price Of Late Car for One Day" required>
+            <br><br>
 
             <input type="submit" class="btnn"  value="ADD CAR" name="addcar">
             

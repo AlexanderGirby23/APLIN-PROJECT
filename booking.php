@@ -94,6 +94,25 @@ input#name{
     box-shadow:inset 1px 1px 5px rgba(0,0,0,0.3);
 }
 
+select#take_method{
+    width:310px;
+    border:1px solid #ddd;
+    border-radius: 3px;
+    outline: 0;
+    padding: 7px;
+    background-color: #fff;
+}
+
+input#address{
+    width:300px;
+    border:1px solid #ddd;
+    border-radius: 3px;
+    outline: 0;
+    padding: 7px;
+    background-color: #fff;
+    box-shadow:inset 1px 1px 5px rgba(0,0,0,0.3);
+}
+
 input#dfield{
     width:300px;
     border:1px solid #ddd;
@@ -256,7 +275,9 @@ ul li a:hover{
         $phno=mysqli_real_escape_string($con,$_POST['ph']);
         $des=mysqli_real_escape_string($con,$_POST['des']);
         $rdate=date('Y-m-d',strtotime($_POST['rdate']));
-         
+        $take=mysqli_real_escape_string($con,$_POST['take_method']);
+        $address=mysqli_real_escape_string($con,$_POST['address']);
+        
         if(empty($bplace)|| empty($bdate)|| empty($dur)|| empty($phno)|| empty($des)|| empty($rdate)){
             echo '<script>alert("please fill the place")</script>';
 
@@ -264,7 +285,7 @@ ul li a:hover{
         else{
             if($bdate<$rdate){
             $price=($dur*$carprice);
-            $sql="insert into booking (CAR_ID,EMAIL,BOOK_PLACE,BOOK_DATE,DURATION,PHONE_NUMBER,DESTINATION,PRICE,RETURN_DATE) values($carid,'$uemail','$bplace','$bdate',$dur,$phno,'$des',$price,'$rdate')";
+            $sql="insert into booking (CAR_ID,EMAIL,BOOK_PLACE,BOOK_DATE,DURATION,PHONE_NUMBER,DESTINATION,PRICE,RETURN_DATE, TAKE_METHOD, ADDRESS) values($carid,'$uemail','$bplace','$bdate',$dur,$phno,'$des',$price,'$rdate','$take', '$address')";
             $result = mysqli_query($con,$sql);
             
             if($result){
@@ -350,6 +371,20 @@ ul li a:hover{
             <br>
             <input type ="date" name="rdate"
             id="dfield"  min='1899-01-01' placeholder="Enter The Return Date">
+            <br><br>
+
+            <label>Take Method : </label>
+            <br>
+            <select name="take_method" id="take_method">
+                <option value="self">Self Taken</option>
+                <option value="send">Send</option>
+            </select>
+            <br><br>
+
+            <label>Address : </label>
+            <br>
+            <input type="text" name="address"
+            id="address" placeholder="Enter Your Sending Address">
             <br><br>
             <input type="submit"  class="btnn" value="BOOK" name="book" >
             

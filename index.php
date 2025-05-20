@@ -39,8 +39,29 @@ require_once('connection.php');
         {
             echo '<script>alert("please fill the blanks")</script>';
         }
-
         else{
+            $username_ada = true;
+            // cek admin
+            $query="select *from admin where ADMIN_ID='$email'";
+            $res=mysqli_query($con,$query);
+            if($row=mysqli_fetch_assoc($res)){
+                $db_password = $row['ADMIN_PASSWORD'];
+                if($pass  == $db_password)
+                {
+                    
+                    // session_start();
+                    // $_SESSION['email'] = $email;
+                    echo '<script>alert("Welcome ADMINISTRATOR!");</script>';
+                    header("location: admindash.php");
+                    exit;
+                    
+                }
+                else{
+                    echo '<script>alert("Incorrect password.")</script>';
+                }
+            }
+
+            // cek user
             $query="select * from users where EMAIL='$email'";
             $res=mysqli_query($con,$query);
             if($row=mysqli_fetch_assoc($res)){
@@ -92,9 +113,9 @@ require_once('connection.php');
             <div class="form">
                 <h2>Login Here</h2>
                 <form method="POST"> 
-                <input type="email" name="email" required placeholder="Enter Email Here">
-                <input type="password" name="pass" required placeholder="Enter Password Here">
-                <input class="btnn" type="submit" id="submitlog" value="Login" name="login"></input>
+                    <input type="text" name="email" required placeholder="Enter Email Here">
+                    <input type="password" name="pass" required placeholder="Enter Password Here">
+                    <input class="btnn" type="submit" id="submitlog" value="Login" name="login"></input>
                 </form>
                 <p class="link">Don't have an account?<br>
                 <a href="register.php">Sign up</a> here</a></p>

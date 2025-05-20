@@ -203,6 +203,7 @@ $num=mysqli_num_rows($queryy);
                         <th>FUEL TYPE</th>
                         <th>CAPACITY</th>
                         <th>PRICE</th>
+                        <th>LATE CHARGE</th>
                         <th>AVAILABLE</th>
                         <th>DELETE</th>
                     </tr>
@@ -222,6 +223,7 @@ $num=mysqli_num_rows($queryy);
                     <td><?php echo $res['FUEL_TYPE'];?></php></td>
                     <td><?php echo $res['CAPACITY'];?></php></td>
                     <td><?php echo $res['PRICE'];?></php></td>
+                    <td><?php echo $res['LATE_CHARGE'];?></php></td>
                     <td><?php  
                     if($res['AVAILABLE']=='Y')
                     {

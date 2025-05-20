@@ -22,8 +22,9 @@ if(isset($_POST['addcar']) ){
                 $ftype=mysqli_real_escape_string($con,$_POST['ftype']);
                 $capacity=mysqli_real_escape_string($con,$_POST['capacity']);
                 $price=mysqli_real_escape_string($con,$_POST['price']);
+                $late=mysqli_real_escape_string($con,$_POST['late']);
                 $available="Y";
-                $query="INSERT INTO cars(CAR_NAME,FUEL_TYPE,CAPACITY,PRICE,CAR_IMG,AVAILABLE) values('$carname','$ftype',$capacity,$price,'$new_img_name','$available')";
+                $query="INSERT INTO cars(CAR_NAME,FUEL_TYPE,CAPACITY,PRICE,CAR_IMG,AVAILABLE,LATE_CHARGE) values('$carname','$ftype',$capacity,$price,'$new_img_name','$available', '$late')";
                 $res=mysqli_query($con,$query);
                 if($res){
                     echo '<script>alert("New Car Added Successfully!!")</script>';
