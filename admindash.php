@@ -39,10 +39,10 @@
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow:0 0  20px rgba(0,0,0,0.15);
-    margin-left : 350px ;
+    margin:auto;
     margin-top: 25px;
-    width: 800px;
-    height: 500px;
+    width: 1400px;
+    height: fit-content;
 }
 .content-table thead tr{
     background-color: orange;

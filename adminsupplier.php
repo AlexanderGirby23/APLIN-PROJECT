@@ -29,6 +29,12 @@
     height: 109vh;
     animation: infiniteScrollBg 50s linear infinite;
 }
+/* .navbar{
+    width: 1200px;
+    height: 75px;
+    margin: auto;
+}
+
 .icon{
     width:200px;
     float: left;
@@ -73,20 +79,20 @@ ul li a{
     font-weight: bold;
     transition: 0.4s ease-in-out;
 
-}
+} */
 
 .content-table{
    border-collapse: collapse;
     
-    font-size: 0.9em;
+    font-size: 1em;
     min-width: 400px;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow:0 0  20px rgba(0,0,0,0.15);
-    margin:auto;
+    margin: auto ;
     margin-top: 25px;
-    width: 1500px;
-    height: 500px;
+    width: 1300px;
+    height: fit-content;
 }
 .content-table thead tr{
     background-color: orange;
@@ -119,10 +125,9 @@ ul li a{
 
 
 .header{
-    margin-top: 70px;
+    margin-top: -700px;
     margin-left: 650px;
 }
-
 
 
 .nn{
@@ -146,35 +151,59 @@ ul li a{
     
 }
 
+.add{
+    width: 200px;
+    height: 40px;
+   
+    background: #ff7200;
+    border:none;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    color:#fff;
+    transition: 0.4s ease;
+    margin-left: 1200px;
+}
+
+.add a{
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+    
+}
+
 .but a{
     text-decoration: none;
     color: black;
-}   
-</style>
+}
+</style>    
 <?php
-require('adminnav.php');
+require './adminnav.php';
 require_once('connection.php');
-$query="select *from users";
+$query="SELECT *from suppliers";    
 $queryy=mysqli_query($con,$query);
 $num=mysqli_num_rows($queryy);
 
 
 ?>
 <div class="hai">
+
+         </div>
         <div>
-            <h1 class="header">USERS</h1>
+            <h1 class="header">ADMIN</h1>
+            <button class="add"><a href="addsupplier.php">+ ADD SUPPLIER</a></button>
             <div>
                 <div>
                     <table class="content-table">
                 <thead>
                     <tr>
-                        <th>NAME</th> 
-                        <th>EMAIL</th>
-                        <th>LICENSE NUMBER</th>
-                        <th>PHONE NUMBER</th> 
-                        <th>GENDER</th> 
-                        <th>Password</th> 
-                        <th>DELETE USERS</th>
+                        <th>Supplier ID</th>
+                        <th>Supplier Name</th>
+                        <th>Contact Name</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -186,17 +215,22 @@ $num=mysqli_num_rows($queryy);
                 
                 ?>
                 <tr  class="active-row">
-                    <td><?php echo $res['FNAME']."  ".$res['LNAME'];?></php></td>
-                    <td><?php echo $res['EMAIL'];?></php></td>
-                    <td><?php echo $res['LIC_NUM'];?></php></td>
-                    <td><?php echo $res['PHONE_NUMBER'];?></php></td>
-                    <td><?php echo $res['GENDER'];?></php></td>
-                    <td><?php echo  $res['PASSWORD'];?></php></td>
-                    <td><button type="submit" class="but" name="approve"><a href="deleteuser.php?id=<?php echo $res['EMAIL']?>">DELETE USER</a></button></td>
+                    <td><?php echo $res['supplier_id']; ?></td>
+                    <td><?php echo $res['supplier_name']; ?></td>
+                    <td><?php echo $res['contact_name']; ?></td>
+                    <td><?php echo $res['phone_number']; ?></td>
+                    <td><?php echo $res['email']; ?></td>
+                    <td><?php echo $res['address']; ?></td>
+                    <td>
+                        <button type="submit" class="but" name="delete">
+                            <a href="deletesupplier.php?id=<?php echo $res['supplier_id']; ?>">DELETE</a>
+                        </button>
+                    </td>
                 </tr>
                <?php } ?>
                 </tbody>
                 </table>
+                
                 </div>
             </div>
         </div>

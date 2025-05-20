@@ -266,3 +266,24 @@ ADD LATE_CHARGE INT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+CREATE TABLE suppliers (
+    supplier_id INT AUTO_INCREMENT PRIMARY KEY, -- ID unik untuk supplier
+    supplier_name VARCHAR(100) NOT NULL,       -- Nama supplier
+    contact_name VARCHAR(100),                 -- Nama kontak utama di supplier
+    phone_number VARCHAR(20),                  -- Nomor telepon supplier
+    email VARCHAR(100),                        -- Email supplier
+    address TEXT,                              -- Alamat lengkap supplier
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Waktu pembuatan data
+);
+
+CREATE TABLE master_spareparts (
+    sparepart_id INT AUTO_INCREMENT PRIMARY KEY,
+    sparepart_name VARCHAR(100) NOT NULL,
+    DESCRIPTION TEXT,
+    price DECIMAL(10, 2) NOT NULL,
+    stock INT NOT NULL DEFAULT 0,
+    supplier_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (supplier_id) REFERENCES suppliers(supplier_id) ON DELETE SET NULL
+);

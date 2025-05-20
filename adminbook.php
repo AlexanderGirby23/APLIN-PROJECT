@@ -30,11 +30,6 @@
     height: 109vh;
     animation: infiniteScrollBg 50s linear infinite;
 }
-.navbar{
-    width: 1200px;
-    height: 75px;
-    margin: auto;
-}
 
 .icon{
     width:200px;
@@ -90,9 +85,9 @@ ul li a{
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow:0 0  20px rgba(0,0,0,0.15);
-    margin-left : 100px ;
+    margin: auto;
     margin-top: 25px;
-    width: 1300px;
+    width: 900px;
     height: 300px;
 }
 .content-table thead tr{

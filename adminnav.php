@@ -1,91 +1,143 @@
-<style>
-.navbar{
-    width: 1200px;
-    height: 75px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Navbar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.icon{
-    width:200px;
-    float: left;
-    height : 70px;
-    display: flex;
-    align-items: center;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
 
-.logo{
-    color: #ff7200;
-    font-size: 35px;
-    font-family: Arial;
-    padding-left: 20px;
-    float:left;
-    padding-top: 10px;
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #ffffff;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
+        .navbar-brand {
+            font-size: 20px;
+            font-weight: bold;
+            color: #000;
+        }
 
-}
-.menu{
-    width: 400px;
-    float: left;
-    height: 70px;
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            list-style: none;
+        }
 
-}
-ul{
-    float: left;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        .navbar-nav li {
+            margin-left: 20px;
+        }
 
-ul li{
-    list-style: none;
-    margin-left: 62px;
-    margin-top: 27px;
-    font-size: 14px;
+        .navbar-nav a {
+            text-decoration: none;
+            color: #000;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
 
-}
+        .navbar-nav a:hover {
+            color: #007bff;
+        }
 
-ul li a{
-    text-decoration: none;
-    color: black;
-    font-family: Arial;
-    font-weight: bold;
-    transition: 0.4s ease-in-out;
+        .dropdown {
+            position: relative;
+        }
 
-}
-.nn{
-    width:100px;
-    /* background: #ff7200; */
-    border:none;
-    height: 40px;
-    font-size: 18px;
-    border-radius: 10px;
-    cursor: pointer;
-    color:white;
-    transition: 0.4s ease;
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            z-index: 1000;
+        }
 
-}
-.nn a{
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    
-}
-</style>
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: #000;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
 
-<div class="navbar">
-            <div class="icon">
-                <h2 class="logo">CaRs</h2>
-            </div>
-            <div class="menu">
-                <ul>
-                    <li><a href="adminvehicle.php">VEHICLE MANAGEMENT</a></li>
-                    <li><a href="adminusers.php">USERS</a></li>
-                    <li><a href="admindash.php">FEEDBACKS</a></li>
-                    
-                    <li><a href="adminbook.php">BOOKING REQUEST</a></li>
-                  <li> <button class="nn"><a href="index.php">LOGOUT</a></button></li>
-                </ul>
-            </div>
-</div>
+        .dropdown-menu a:hover {
+            background-color: #f8f9fa;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input[type="text"] {
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            padding: 5px 10px;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        .search-bar button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="navbar-brand">CARS</div>
+        <ul class="navbar-nav">
+            <li class="dropdown">
+                <a href="#">MASTER &#9662;</a>
+                <div class="dropdown-menu">
+                    <a href="adminvehicle.php">Vehicle</a>
+                    <a href="adminusers.php">Users</a>
+                    <a href="adminmanagement.php">Admin</a>
+                    <a href="adminsupplier.php">Supplier</a>
+                    <a href="adminsparepart.php">Sparepart</a>
+                </div>
+            </li>
+            <li><a href="admindash.php">Feedbacks</a></li>
+            <li><a href="adminbook.php">Booking Request</a></li>
+            <li><button class="nn"><a href="index.php">Logout</a></button></li>
+        </ul>
+        <!-- <div class="search-bar">
+            <input type="text" placeholder="Search">
+            <button>Search</button>
+        </div> -->
+    </div>
+
+</body>
+</html>
