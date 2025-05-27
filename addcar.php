@@ -1,3 +1,8 @@
+<?php
+require_once('connection.php');
+$query="select * from fuel_type";
+$fuelquery=mysqli_query($con,$query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,7 +87,7 @@ label{
     font-style: italic;
 }
 
-input#name{
+input#name, select{
     width:300px;
     border:1px solid #ddd;
     border-radius: 3px;
@@ -150,10 +155,19 @@ input#name{
             id="name" placeholder="Enter Car Name" required>
             <br><br>
 
-            <label>Fuel Type : </label>
+            <!-- <label>Fuel Type : </label>
             <br>
             <input type ="text" name="ftype"
             id="name" placeholder="Enter Fuel Type" required>
+            <br><br> -->
+
+            <label>Fuel Type : </label>
+            <br>
+            <select name="ftype" id="name">
+                <?php while($res=mysqli_fetch_array($fuelquery)){ ?>
+                    <option value="<?php echo $res['fuel_name'];?>"><?php echo $res['fuel_name'];?></option>
+                <?php } ?>
+            </select>
             <br><br>
 
             <label>Capacity : </label>
@@ -187,6 +201,6 @@ input#name{
             
         </form>
         </div> 
-    </div.main>
+    </div>
 </body>
 </html>

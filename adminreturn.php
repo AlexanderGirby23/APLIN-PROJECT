@@ -12,7 +12,11 @@ $res = mysqli_fetch_assoc($result);
 
 if($res['AVAILABLE']=='Y')
 {
-    echo '<script>alert("CAR ALREADY SRETURNED")</script>';
+    echo '<script>alert("Car already returned")</script>';
+    echo '<script> window.location.href = "adminbook.php";</script>';
+}
+elseif ($res['BOOK_STATUS'] == "UNDER PROCESSING"){
+    echo '<script>alert("Unable to return, booking has not yet been approved")</script>';
     echo '<script> window.location.href = "adminbook.php";</script>';
 }
 else{
@@ -21,7 +25,7 @@ else{
     $query2=mysqli_query($con,$sql4);
     $sql5="UPDATE booking set BOOK_STATUS='RETURNED' where BOOK_ID=$res2[BOOK_ID]";
     $query=mysqli_query($con,$sql5);
-    echo '<script>alert("CAR RETURNED SUCCESSFULLY")</script>';
+    echo '<script>alert("Car returned successfully")</script>';
     echo '<script> window.location.href = "adminbook.php";</script>';
 }  
 

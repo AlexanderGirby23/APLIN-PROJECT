@@ -154,7 +154,7 @@ ul li a{
 <?php
 require('adminnav.php');
 require_once('connection.php');
-$query="select *from users";
+$query="select * from users";
 $queryy=mysqli_query($con,$query);
 $num=mysqli_num_rows($queryy);
 
@@ -170,7 +170,8 @@ $num=mysqli_num_rows($queryy);
                     <tr>
                         <th>NAME</th> 
                         <th>EMAIL</th>
-                        <th>LICENSE NUMBER</th>
+                        <th>DOMICILE</th>
+                        <th>NIK</th>
                         <th>PHONE NUMBER</th> 
                         <th>GENDER</th> 
                         <th>Password</th> 
@@ -188,7 +189,8 @@ $num=mysqli_num_rows($queryy);
                 <tr  class="active-row">
                     <td><?php echo $res['FNAME']."  ".$res['LNAME'];?></php></td>
                     <td><?php echo $res['EMAIL'];?></php></td>
-                    <td><?php echo $res['LIC_NUM'];?></php></td>
+                    <td><?php echo $res['DOMICILE'];?></php></td>
+                    <td><?php echo $res['NIK'];?></php></td>
                     <td><?php echo $res['PHONE_NUMBER'];?></php></td>
                     <td><?php echo $res['GENDER'];?></php></td>
                     <td><?php echo  $res['PASSWORD'];?></php></td>

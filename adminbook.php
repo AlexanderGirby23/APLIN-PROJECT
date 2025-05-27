@@ -175,11 +175,9 @@ $num=mysqli_num_rows($queryy);
                     <tr>
                         <th>CAR ID</th>
                         <th>EMAIL</th>
-                        <th>BOOK PLACE</th>
                         <th>BOOK DATE</th>
                         <th>DURATION</th>
                         <th>PHONE NUMBER</th>
-                        <th>DESTINATION</th>
                         <th>RETURN DATE</th>
                         <th>BOOKING STATUS</th>
                         <th>TAKE METHOD</th>
@@ -200,17 +198,18 @@ $num=mysqli_num_rows($queryy);
                     
                     <td><?php echo $res['CAR_ID'];?></php></td>
                     <td><?php echo $res['EMAIL'];?></php></td>
-                    <td><?php echo $res['BOOK_PLACE'];?></php></td>
                     <td><?php echo $res['BOOK_DATE'];?></php></td>
                     <td><?php echo $res['DURATION'];?></php></td>
                     <td><?php echo $res['PHONE_NUMBER'];?></php></td>
-                    <td><?php echo $res['DESTINATION'];?></php></td>
                     <td><?php echo $res['RETURN_DATE'];?></php></td>
                     <td><?php echo $res['BOOK_STATUS'];?></php></td>
                     <td><?php echo $res['TAKE_METHOD'];?></php></td>
                     <td><?php echo $res['ADDRESS'];?></php></td>
                     <td><button type="submit"  class="but"  name="approve"><a href="approve.php?id=<?php echo $res['BOOK_ID']?>">APPROVE</a></button></td>
-                    <td><button type="submit" class="but" name="approve"><a href="adminreturn.php?id=<?php echo $res['CAR_ID']?>&bookid=<?php echo $res['BOOK_ID']?>">RETURNED</a></button></td>
+                    <td><button type="submit" class="but" name="approve" disabled=
+                    <?= $res['BOOK_STATUS'] == "RETURNED" ? true :false ?>
+                    ><a href="adminreturn.php?id=<?php echo $res['CAR_ID']?>&bookid=<?php echo $res['BOOK_ID']?>">
+                        <?= $res['BOOK_STATUS'] == "RETURNED" ? "RETURNED" : "SET RETURNED" ?></a></button></td>
                 </tr>
                <?php } ?>
                 </tbody>

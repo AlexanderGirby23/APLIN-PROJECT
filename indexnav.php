@@ -110,10 +110,10 @@ ul li a:hover{
         <h2 class="logo">CaRs</h2>
                 <ul>
                     <li><a href="index.php">HOME</a></li>
-                    <li><a href="aboutus.html">ABOUT</a></li>
+                    <li><a href="aboutus2.html">ABOUT</a></li>
                     <li><a href="#">SERVICES</a></li>
                     
-                    <li><a href="contactus.html">CONTACT</a></li>
+                    <li><a href="contactus2.html">CONTACT</a></li>
                   <!-- <li> <button class="adminbtn"><a href="adminlogin.php">ADMIN LOGIN</a></button></li> -->
                 </ul>
             

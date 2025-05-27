@@ -139,12 +139,12 @@ ul li a:hover{
     font-size: 18px;
     border-radius: 10px;
     cursor: pointer;
-    color:#fff;
-    transition: 0.4s ease;
-    text-decoration: none;
-    color:black;
 }
-
+.utton a{
+    cursor: pointer;
+    color: #ffffff;
+    text-decoration: none;
+}
 
 
 
@@ -238,9 +238,9 @@ ul li a:hover{
                
                 <ul>
                     <li><a href="#">HOME</a></li>
-                    <li><a href="aboutus2.html">ABOUT</a></li>
+                    <li><a href="aboutus.html">ABOUT</a></li>
                     
-                    <li><a href="contactus2.html">CONTACT</a></li>
+                    <li><a href="contactus.html">CONTACT</a></li>
                     <li><a href="feedback/Feedbacks.php">FEEDBACK</a></li>
                     <li><button class="nn"><a href="index.php">LOGOUT</a></button></li>
                     <li><img src="images/profile.png" class="circle" alt="Alps"></li>
@@ -254,7 +254,7 @@ ul li a:hover{
     <h1 class="overview">OUR CARS OVERVIEW</h1>
 
     <div class="container">
-        <div class="row">
+        <div class="row" style="display: grid; grid-template-columns: repeat(4, 1fr);">
         <?php
             while($result= mysqli_fetch_array($cars))
             {
@@ -262,14 +262,16 @@ ul li a:hover{
     
         <div class="col">
             <form method="POST">
-                    <div class="card">
+                    <div class="card" style="height: 30rem">
                         <img src="images/<?php echo $result['CAR_IMG']?>" class="card-img-top" alt="<?php echo $result['CAR_IMG']?>" style="max-height: 200px;">
-                        <div class="card-body">
+                        <div class="card-body" style="display:flex; justify-content:space-between; flex-direction:column">
+                            <div class="">
                             <p class="card-text">Car Name : <a><?php echo $result['CAR_NAME']?></a></p>
                             <p class="card-text">Fuel Type : <a><?php echo $result['FUEL_TYPE']?></a></p>
                             <p class="card-text">CAPACITY : <a><?php echo $result['CAPACITY']?></a> </p>
-                            <p class="card-text">Rent Per Day : <a>₹<?php echo $result['PRICE']?>/-</a> </p>
-                            <button type="submit"  name="booknow" class="utton" style="margin-top: 5px;"><a href="booking.php?id=<?php echo $result['CAR_ID'];?>">book</a></button>
+                            <p class="card-text">Rent Per Day : <a><?php echo $result['PRICE']?>/-</a> </p>
+                            </div>
+                            <button type="submit"  name="booknow" class="utton" style="margin-top: 5px;"><a href="booking.php?id=<?php echo $result['CAR_ID'];?>">Book</a></button>
                         </div>
                     </div>
                 <!-- <div class="box">

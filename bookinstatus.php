@@ -12,7 +12,7 @@
 *{
     margin: 0;
     padding: 0;
-
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body{
@@ -112,8 +112,8 @@ ul li{
     $name = mysqli_query($con,$sql);
     $rows=mysqli_fetch_assoc($name);
     if($rows==null){
-        echo '<script>alert("THERE ARE NO BOOKING DETAILS")</script>';
-        echo '<script> window.location.href = "cardetails.php";</script>';
+        echo '<script>alert("No cars booked.")</script>';
+        echo '<script> window.history.back();</script>';
     }
     else{
     $sql2="select * from users where EMAIL='$email'";
@@ -129,7 +129,8 @@ ul li{
 
 
 ?>
-   <ul><li> <button  class="utton"><a href="cardetails.php">Go to Home</a></button></li><li class="name">HELLO! <?php echo $rows2['FNAME']." ".$rows2['LNAME']?></li>
+   <ul><li> <button  class="utton"><a href="cardetails.php">Go to Home</a></button></li>
+   <li class="name"><?php echo $rows2['FNAME']." ".$rows2['LNAME']?> Booking Details</li>
 
 
 

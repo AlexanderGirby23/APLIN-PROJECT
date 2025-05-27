@@ -37,7 +37,7 @@ require_once('connection.php');
         
         if(empty($email)|| empty($pass))
         {
-            echo '<script>alert("please fill the blanks")</script>';
+            echo '<script>alert("please fill in the blanks")</script>';
         }
         else{
             $username_ada = true;
@@ -74,11 +74,11 @@ require_once('connection.php');
                     
                 }
                 else{
-                    echo '<script>alert("Enter a proper password")</script>';
+                    echo '<script>alert("Incorrect password. Try again.")</script>';
                 }
             }
             else{
-                echo '<script>alert("enter a proper email")</script>';
+                echo '<script>alert("E-mail not registered.")</script>';
             }
         }
     }
@@ -119,6 +119,7 @@ require_once('connection.php');
                 </form>
                 <p class="link">Don't have an account?<br>
                 <a href="register.php">Sign up</a> here</a></p>
+                <p class="link"><a href="forgotpass.php">Forgot password?</a></p>
                 <!-- <p class="liw">or<br>Log in with</p>
                 <div class="icon">
                     &emsp;&emsp;&emsp;&ensp;<a href="https://www.facebook.com/"><ion-icon name="logo-facebook"></ion-icon> </a>&nbsp;&nbsp;
