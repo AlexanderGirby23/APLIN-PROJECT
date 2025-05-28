@@ -180,7 +180,8 @@ ul li a{
 <?php
 require './adminnav.php';
 require_once('connection.php');
-$query="SELECT *from admin";    
+// limit 1, at least 1 admin must be present
+$query="SELECT *from admin limit 1,99";    
 $queryy=mysqli_query($con,$query);
 $num=mysqli_num_rows($queryy);
 

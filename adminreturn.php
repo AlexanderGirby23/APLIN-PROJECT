@@ -23,7 +23,7 @@ else{
     
     $sql4="UPDATE cars set AVAILABLE='Y' where CAR_ID=$res[CAR_ID]";
     $query2=mysqli_query($con,$sql4);
-    $sql5="UPDATE booking set BOOK_STATUS='RETURNED' where BOOK_ID=$res2[BOOK_ID]";
+    $sql5="UPDATE booking set BOOK_STATUS='RETURNED', RETURN_DATE = SYSDATE() where BOOK_ID=$res2[BOOK_ID]";
     $query=mysqli_query($con,$sql5);
     echo '<script>alert("Car returned successfully")</script>';
     echo '<script> window.location.href = "adminbook.php";</script>';

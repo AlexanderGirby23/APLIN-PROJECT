@@ -10,7 +10,7 @@ if(isset($_POST['addsupplier']) ){
     $query="INSERT INTO suppliers(supplier_name,contact_name,phone_number,email,address) values('$supplier_name','$contact_name','$phone_number','$email','$address')";
     $res=mysqli_query($con,$query);
     if($res){
-        echo '<script>alert("New Suppliers Added Successfully!!")</script>';
+        echo '<script>alert("New supplier added successfully!!")</script>';
         echo '<script> window.location.href = "adminsupplier.php";</script>';                }
 }
 else{
