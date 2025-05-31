@@ -152,17 +152,20 @@ ul li a{
 }   
 </style>
 <?php
-require('adminnav.php');
 require_once('connection.php');
+require('protected.php');
 $query="select * from users";
 $queryy=mysqli_query($con,$query);
 $num=mysqli_num_rows($queryy);
 
 
 ?>
+    <div id="navbar">
+
+    </div>
 <div class="hai">
         <div>
-            <h1 class="header">USERS</h1>
+            <h1 style="text-align: center; margin: 1rem 0">USERS</h1>
             <div>
                 <div>
                     <table class="content-table">
@@ -203,4 +206,9 @@ $num=mysqli_num_rows($queryy);
             </div>
         </div>
 </body>
+<script>
+        window.onload = () =>{
+        $("#navbar").load("./adminnav.php");
+    }
+</script>
 </html>

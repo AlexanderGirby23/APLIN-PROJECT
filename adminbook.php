@@ -154,8 +154,9 @@ ul li a{
 }
 </style>
 <?php
-require('adminnav.php');
+// require('adminnav.php');
 require_once('connection.php');
+require('protected.php');
 $query="SELECT *from booking ORDER BY BOOK_ID DESC";    
 $queryy=mysqli_query($con,$query);
 
@@ -176,7 +177,14 @@ $queryyret=mysqli_query($con,$queryret);
 
 
 ?>
+<script>
+        window.onload = () =>{
+        $("#navbar").load("./adminnav.php");
+    }
+</script>
+    <div id="navbar">
 
+    </div>
 <div class="hai">
 
          </div>

@@ -29,69 +29,19 @@
     height: 109vh;
     animation: infiniteScrollBg 50s linear infinite;
 }
-/* .navbar{
-    width: 1200px;
-    height: 75px;
-    margin: auto;
-}
 
-.icon{
-    width:200px;
-    float: left;
-    height : 70px;
-}
-
-.logo{
-    color: #ff7200;
-    font-size: 35px;
-    font-family: Arial;
-    padding-left: 20px;
-    float:left;
-    padding-top: 10px;
-
-}
-.menu{
-    width: 400px;
-    float: left;
-    height: 70px;
-
-}
-
-ul{
-    float: left;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-ul li{
-    list-style: none;
-    margin-left: 62px;
-    margin-top: 27px;
-    font-size: 14px;
-
-}
-
-ul li a{
-    text-decoration: none;
-    color: black;
-    font-family: Arial;
-    font-weight: bold;
-    transition: 0.4s ease-in-out;
-
-} */
 
 .content-table{
    border-collapse: collapse;
     
-    font-size: 1em;
-    min-width: 400px;
+    font-size: 0.9em;
+  
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow:0 0  20px rgba(0,0,0,0.15);
-    margin-left : 100px ;
+    margin:auto;
     margin-top: 25px;
-    width: 1300px;
+    width: 1400px;
     height: fit-content;
 }
 .content-table thead tr{
@@ -125,7 +75,7 @@ ul li a{
 
 
 .header{
-    margin-top: -700px;
+    margin-top: 70px;
     margin-left: 650px;
 }
 
@@ -150,66 +100,32 @@ ul li a{
     font-weight: bold;
     
 }
+</style>
 
-.add{
-    width: 200px;
-    height: 40px;
-   
-    background: #ff7200;
-    border:none;
-    font-size: 18px;
-    border-radius: 10px;
-    cursor: pointer;
-    color:#fff;
-    transition: 0.4s ease;
-    margin-left: 1200px;
-}
-
-.add a{
-    text-decoration: none;
-    color: black;
-    font-weight: bolder;
-    
-}
-
-.but a{
-    text-decoration: none;
-    color: black;
-}
-</style>    
 <?php
+// require_once('adminnav.php');
 require_once('connection.php');
 require('protected.php');
-// limit 1, at least 1 admin must be present
-$query="SELECT *from admin limit 1,99";    
+$query="select *from feedback";
 $queryy=mysqli_query($con,$query);
 $num=mysqli_num_rows($queryy);
 
 
 ?>
-<script>
-        window.onload = () =>{
-        $("#navbar").load("./adminnav.php");
-    }
-</script>
     <div id="navbar">
 
     </div>
-<div class="hai">
-
-         </div>
+    <div class="hai">
         <div>
-            <h1 class="header">ADMIN</h1>
-            <button class="add"><a href="addadmin.php">+ ADD ADMIN</a></button>
+            <h1 class="header">FEEDBACKS</h1>
             <div>
                 <div>
                     <table class="content-table">
                 <thead>
                     <tr>
-                        
-                        <th>Admin ID</th>
-                        <th>Admin Password</th>
-                        <th>Action</th>
+                        <th>FEEDBACK_ID</th> 
+                        <th>EMAIL</th>
+                        <th>COMMENT</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -221,17 +137,21 @@ $num=mysqli_num_rows($queryy);
                 
                 ?>
                 <tr  class="active-row">
-                    
-                    <td><?php echo $res['ADMIN_ID'];?></php></td>
-                    <td><?php echo $res['ADMIN_PASSWORD'];?></php></td>
-                    <td><button type="submit" class="but" name="approve"><a href="deleteadmin.php?id=<?php echo $res['ADMIN_ID']?>">DELETE ADMIN</a></button></td>
+                    <td><?php echo $res['FED_ID'];?></php></td>
+                    <td><?php echo $res['EMAIL'];?></php></td>
+                    <td><?php echo $res['COMMENT'];?></php></td>
                 </tr>
                <?php } ?>
                 </tbody>
                 </table>
-                
                 </div>
             </div>
         </div>
+     
 </body>
+<script>
+        window.onload = () =>{
+        $("#navbar").load("./adminnav.php");
+    }
+</script>
 </html>

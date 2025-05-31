@@ -129,9 +129,9 @@
                     <a href="adminsparepart.php">Sparepart</a>
                 </div>
             </li>
-            <li><a href="admindash.php">Feedbacks</a></li>
+            <li><a href="adminfeedbacks.php">Feedbacks</a></li>
             <li><a href="adminbook.php">Booking Request</a></li>
-            <li><button class="nn"><a href="index.php">Logout</a></button></li>
+            <li><button class="nn"><a href="logout.php">Logout</a></button></li>
         </ul>
         <!-- <div class="search-bar">
             <input type="text" placeholder="Search">
