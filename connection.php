@@ -3,13 +3,13 @@
     $con = mysqli_connect('localhost','root','','carproject');
     if(!$con)
     {
-        echo 'please check your Database connection';
+        echo 'Please check your database connection';
     }
 
-
-
-
-
-
-
 ?>
+
+<script 
+    src="https://code.jquery.com/jquery-3.7.1.min.js" 
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" 
+    crossorigin="anonymous"
+    ></script>
