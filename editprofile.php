@@ -96,60 +96,31 @@ if(isset($_POST['regs']))
     $nik=mysqli_real_escape_string($con,$_POST['nik']);
     $ph=mysqli_real_escape_string($con,$_POST['ph']);
    
-    $pass=mysqli_real_escape_string($con,$_POST['pass']);
-    $cpass=mysqli_real_escape_string($con,$_POST['cpass']);
     $gender=mysqli_real_escape_string($con,$_POST['gender']);
     if(empty($fname)|| empty($lname)|| empty($email)|| empty($dom)|| empty($nik)|| empty($ph)|| empty($gender))
     {
         echo '<script>alert("Some fields are blank. Please fill in appropriately.")</script>';
     }
     else{
-        if($pass==$cpass){
-        $sql2="SELECT *from users where EMAIL='$email'";
-        $res=mysqli_query($con,$sql2);
-        if(mysqli_num_rows($res)>0){
-            echo '<script>alert("E-mail already taken. \nPlease choose another e-mail.")</script>';
-            echo '<script> window.location.href = "index.php";</script>';
-
-        }
-        else{
-        $sql="insert into users (FNAME,LNAME,EMAIL,DOMICILE,NIK,PHONE_NUMBER,PASSWORD,GENDER) values('$fname','$lname','$email','$dom','$nik',$ph,'$Pass','$gender')";
+       $sql="UPDATE users 
+        
+        set FNAME = '$fname', 
+        LNAME = '$lname',
+        DOMICILE = '$dom',
+        NIK = '$nik',
+        PHONE_NUMBER = $ph,
+        GENDER = '$gender'
+        WHERE EMAIL = '$email'
+        ";
         $result = mysqli_query($con,$sql);
-          
-
-          // $to_email = $email;
-          // $subject = "NO-REPLY";
-          // $body = "THIS MAIL CONTAINS YOUR AUTHENTICATION DETAILS....\nYour Password is $pass and Your Registered email is $to_email"
-          //          ;
-          // $headers = "From: sender email";
-          
-          // if (mail($to_email, $subject, $body, $headers))
-          
-          // {
-          //     echo "Email successfully sent to $to_email...";
-          // }
-          
-          // else
- 
-          // {
-          // echo "Email sending failed!";
-          // }
         if($result){
-            echo '<script>alert("Registration successful! \nPress ok to login")</script>';
-            echo '<script> window.location.href = "index.php";</script>';       
+            echo '<script>alert("Update successful!")</script>';
+            echo '<script> window.location.href = "cardetails.php";</script>';       
            }
         else{
             echo '<script>alert("please check the connection")</script>';
         }
-    
-        }
-
-        }
-        else{
-            echo '<script>alert("Passwords must match in order to log in.")</script>';
-            echo '<script> window.location.href = "register.php";</script>';
-        }
-    }
+      }
 }
 
 
@@ -158,7 +129,7 @@ if(isset($_POST['regs']))
 
 
 
-    <button id="back" onclick="window.history.back()"><a href="">HOME</a></button>
+    <button id="back" onclick="window.history.back()"><a>HOME</a></button>
     <h1 id="fam">EDIT PROFILE</h1>
  <div class="main">
         
@@ -170,7 +141,9 @@ if(isset($_POST['regs']))
             <label>First Name</label>
             <br>
             <input type ="text" name="fname"
-            class="name" title="Enter Your First Name" placeholder="e.g. John" required>
+            class="name" title="Enter Your First Name" placeholder="e.g. John" 
+            value="<?= $rows["FNAME"] ?? "" ?>"
+            required>
             <br><br>
               </div>
               <div class="formlabel">
@@ -178,7 +151,9 @@ if(isset($_POST['regs']))
             <label>Last Name</label>
             <br>
             <input type ="text" name="lname"
-            class="name" title="Enter Your Last Name" placeholder="e.g. Smith" required>
+            class="name" title="Enter Your Last Name" placeholder="e.g. Smith" 
+            value="<?= $rows["LNAME"] ?? "" ?>"
+            required>
             <br><br>
               </div>
           </div>
@@ -187,13 +162,16 @@ if(isset($_POST['regs']))
             <label>Email</label>
             <br>
             <input type="email" name="email"
-            class="name" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="ex: example@ex.com"placeholder="Enter Valid Email" required>
+            class="name" 
+            value="<?= $rows["EMAIL"] ?? "" ?>"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="ex: example@ex.com"placeholder="Enter Valid Email" required>
             <br><br>
           </div>
           <div class="formlabel">
             <label>Domicile Address</label>
             <br>
             <input type="text" name="dom"
+            value="<?= $rows["DOMICILE"] ?? "" ?>"
             class="name" placeholder="Enter address" required>
             <br><br>
           </div>  
@@ -203,6 +181,7 @@ if(isset($_POST['regs']))
             <label>NIK</label>
             <br>
             <input type="text" name="nik"
+            value="<?= $rows["NIK"] ?? "" ?>"
             class="name" placeholder="16 digits of NIK" minlength="16" maxlength="16" 
             onkeypress="return onlyNumberKey(event)" required>
             <br><br>
@@ -210,25 +189,11 @@ if(isset($_POST['regs']))
           <div class="formlabel">
             <label>Phone Number</label>
             <br>
-            <input type="tel" name="ph" maxlength="13" onkeypress="return onlyNumberKey(event)"
+            <input type="tel" name="ph" maxlength="13" 
+            value="<?= $rows["PHONE_NUMBER"] ?? "" ?>"
+            onkeypress="return onlyNumberKey(event)"
             class="name" placeholder="Maximum of 13 digits" required>
             <br><br>
-          </div>
-          <div class="splitscreen">
-            <div class="formlabel">
-              <label>Password</label>
-              <br>
-              <input type="password" name="pass" maxlength="12"
-              id="psw" placeholder="Enter Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
-              <br><br>
-            </div>
-            <div class="formlabel">
-              <label>Confirm Password</label>
-              <br>
-              <input type="password" name="cpass" 
-              id="cpsw" placeholder="Re-enter the password" required>
-              <br><br>
-            </div>
           </div>
             <label>Gender</label><br>
                   <input type="radio" id="input_enabled" name="gender" value="male" style="width:40px">
@@ -239,7 +204,7 @@ if(isset($_POST['regs']))
 
             <br><br>
           <div class="formlabel">
-<input type="submit" class="btnn"  value="REGISTER" name="regs" style="background-color: #ff7200;color: white">
+<input type="submit" class="btnn"  value="EDIT PROFILE" name="regs" style="background-color: #ff7200;color: white">
           </div>
             
         

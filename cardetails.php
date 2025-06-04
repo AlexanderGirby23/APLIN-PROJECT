@@ -249,7 +249,7 @@ ul li a:hover{
                     <li><img src="images/profile.png" class="circle" alt="Alps"></li>
                     <li><p class="phello">HELLO! &nbsp;<a id="pname"><?php echo $rows['FNAME']." ".$rows['LNAME']?></a></p></li>
                     <li><a id="stat" href="bookinstatus.php" title="See your bookings">BOOKING STATUS</a></li>
-                    <li><a href="bookinstatus.php" title="Make changes to your profile">EDIT PROFILE</a></li>
+                    <li><a href="editprofile.php" title="Make changes to your profile">EDIT PROFILE</a></li>
                 </ul>
             </div>
             

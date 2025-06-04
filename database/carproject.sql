@@ -298,3 +298,8 @@ INSERT INTO `carproject`.`fuel_type` (`fuel_name`) VALUES ('Gas');
 INSERT INTO `carproject`.`fuel_type` (`fuel_name`) VALUES ('Petrol'); 
 INSERT INTO `carproject`.`fuel_type` (`fuel_name`) VALUES ('Diesel'); 
 INSERT INTO `carproject`.`fuel_type` (`fuel_name`) VALUES ('Solar'); 
+
+
+ALTER TABLE cars
+ADD `CREATED` DATETIME DEFAULT CURRENT_TIMESTAMP AFTER `LATE_CHARGE`,
+ADD `DELETED` DATETIME DEFAULT NULL AFTER `CREATED`;
