@@ -10,11 +10,11 @@ if(isset($_POST['addsupplier']) ){
     $query="INSERT INTO master_spareparts(sparepart_name,description,price,stock,supplier_id) values('$sparepart_name','$description','$price','$stock','$supplier_id')";
     $res=mysqli_query($con,$query);
     if($res){
-        echo '<script>alert("New Spareparts Added Successfully!!")</script>';
+        echo '<script>alert("New sparepart added successfully!!")</script>';
         echo '<script> window.location.href = "adminsparepart.php";</script>';                }
 }
 else{
-    $em="unknown error occured";
+    $em="unknown error occurred";
     header("Location: addsparepart.php?error=$em");
 }
 

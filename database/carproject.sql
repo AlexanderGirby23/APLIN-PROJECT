@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 -- Database: `carproject`
 --
 
-CREATE DATABASE carproject;
+CREATE OR REPLACE DATABASE carproject;
 USE carproject;
 
 -- --------------------------------------------------------
@@ -49,21 +49,22 @@ INSERT INTO `admin` (`ADMIN_ID`, `ADMIN_PASSWORD`) VALUES
 --
 
 CREATE TABLE `booking` (
-  `BOOK_ID` int(11) NOT NULL,
-  `CAR_ID` int(11) NOT NULL,
-  `EMAIL` varchar(255) NOT NULL,
-  `BOOK_PLACE` varchar(255) NOT NULL,
-  `BOOK_DATE` date NOT NULL,
-  `DURATION` int(11) NOT NULL,
-  `PHONE_NUMBER` bigint(20) NOT NULL,
-  `DESTINATION` varchar(255) NOT NULL,
-  `RETURN_DATE` date NOT NULL,
-  `PRICE` int(11) NOT NULL,
-  `BOOK_STATUS` varchar(255) NOT NULL DEFAULT 'UNDER PROCESSING',
-  `TAKE_METHOD` varchar(10) NOT NULL,
-  `ADDRESS` varchar(100)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `BOOK_ID` INT(11) NOT NULL,
+  `CAR_ID` INT(11) NOT NULL,
+  `EMAIL` VARCHAR(255) NOT NULL,
+  `BOOK_PLACE` VARCHAR(255),
+  `BOOK_DATE` DATE NOT NULL,
+  `DURATION` INT(11) NOT NULL,
+  `PHONE_NUMBER` BIGINT(20) NOT NULL,
+  `DESTINATION` VARCHAR(255),
+  `RETURN_DATE` DATE NOT NULL,
+  `PRICE` INT(11) NOT NULL,
+  `BOOK_STATUS` VARCHAR(255) NOT NULL DEFAULT 'UNDER PROCESSING',
+  `TAKE_METHOD` VARCHAR(10) NOT NULL,
+  `ADDRESS` VARCHAR(100)
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
+SELECT DATE_ADD("2025-05-05", INTERVAL 10 DAY);
 --
 -- Dumping data for table `booking`
 --
@@ -80,14 +81,14 @@ INSERT INTO `booking` (`BOOK_ID`, `CAR_ID`, `EMAIL`, `BOOK_PLACE`, `BOOK_DATE`, 
 --
 
 CREATE TABLE `cars` (
-  `CAR_ID` int(11) NOT NULL,
-  `CAR_NAME` varchar(255) NOT NULL,
-  `FUEL_TYPE` varchar(255) NOT NULL,
-  `CAPACITY` int(11) NOT NULL,
-  `PRICE` int(11) NOT NULL,
-  `CAR_IMG` varchar(255) NOT NULL,
-  `AVAILABLE` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `CAR_ID` INT(11) NOT NULL,
+  `CAR_NAME` VARCHAR(255) NOT NULL,
+  `FUEL_TYPE` VARCHAR(255) NOT NULL,
+  `CAPACITY` INT(11) NOT NULL,
+  `PRICE` INT(11) NOT NULL,
+  `CAR_IMG` VARCHAR(255) NOT NULL,
+  `AVAILABLE` VARCHAR(255) NOT NULL
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `cars`
@@ -106,10 +107,10 @@ INSERT INTO `cars` (`CAR_ID`, `CAR_NAME`, `FUEL_TYPE`, `CAPACITY`, `PRICE`, `CAR
 --
 
 CREATE TABLE `feedback` (
-  `FED_ID` int(11) NOT NULL,
-  `EMAIL` varchar(255) NOT NULL,
-  `COMMENT` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `FED_ID` INT(11) NOT NULL,
+  `EMAIL` VARCHAR(255) NOT NULL,
+  `COMMENT` TEXT NOT NULL
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `feedback`
@@ -125,13 +126,13 @@ INSERT INTO `feedback` (`FED_ID`, `EMAIL`, `COMMENT`) VALUES
 --
 
 CREATE TABLE `payment` (
-  `PAY_ID` int(11) NOT NULL,
-  `BOOK_ID` int(11) NOT NULL,
-  `CARD_NO` varchar(255) NOT NULL,
-  `EXP_DATE` varchar(255) NOT NULL,
-  `CVV` int(11) NOT NULL,
-  `PRICE` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `PAY_ID` INT(11) NOT NULL,
+  `BOOK_ID` INT(11) NOT NULL,
+  `CARD_NO` VARCHAR(255) NOT NULL,
+  `EXP_DATE` VARCHAR(255) NOT NULL,
+  `CVV` INT(11) NOT NULL,
+  `PRICE` INT(11) NOT NULL
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `payment`
@@ -147,23 +148,24 @@ INSERT INTO `payment` (`PAY_ID`, `BOOK_ID`, `CARD_NO`, `EXP_DATE`, `CVV`, `PRICE
 --
 
 CREATE TABLE `users` (
-  `FNAME` varchar(255) NOT NULL,
-  `LNAME` varchar(255) NOT NULL,
-  `EMAIL` varchar(255) NOT NULL,
-  `LIC_NUM` varchar(255) NOT NULL,
-  `PHONE_NUMBER` bigint(11) NOT NULL,
-  `PASSWORD` varchar(255) NOT NULL,
-  `GENDER` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `FNAME` VARCHAR(255) NOT NULL,
+  `LNAME` VARCHAR(255) NOT NULL,
+  `EMAIL` VARCHAR(255) NOT NULL,
+  `DOMICILE` VARCHAR(255) NOT NULL, -- Domicile address, where the customer lives
+  `NIK` VARCHAR(16) NOT NULL, -- NIK
+  `PHONE_NUMBER` BIGINT(11) NOT NULL,
+  `PASSWORD` VARCHAR(255) NOT NULL,
+  `GENDER` VARCHAR(255) NOT NULL
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`FNAME`, `LNAME`, `EMAIL`, `LIC_NUM`, `PHONE_NUMBER`, `PASSWORD`, `GENDER`) VALUES
-('Swasthik', 'Jain', 'swasthik@gmail.com', 'B2343', 9845687555, 'c788b480e4a3c807a14b6f3f4b1a1ae6', 'male'),
-('Varshith', 'Hegde', 'varshithvh@gmail.com', 'B3uudh4', 6363549133, 'e6235c884414e320c8781c22b0c38c9b', 'male'),
-('Varshith', 'hegde', 'varshithvhegde@gmail.com', 'ghhdhd', 6363549133, 'e6235c884414e320c8781c22b0c38c9b', 'male');
+INSERT INTO `users` (`FNAME`, `LNAME`, `EMAIL`, `DOMICILE`, `NIK`, `PHONE_NUMBER`, `PASSWORD`, `GENDER`) VALUES
+('Swasthik', 'Jain', 'swasthik@gmail.com', 'B2343', '4829301914120002' , 9845687555, 'c788b480e4a3c807a14b6f3f4b1a1ae6', 'male'),
+('Varshith', 'Hegde', 'varshithvh@gmail.com', 'B3uudh4', '4829301131400002' ,6363549133, 'e6235c884414e320c8781c22b0c38c9b', 'male'),
+('Varshith', 'hegde', 'varshithvhegde@gmail.com', 'ghhdhd', '1523142704250001', 6363549133,'e6235c884414e320c8781c22b0c38c9b', 'male');
 
 --
 -- Indexes for dumped tables
@@ -217,25 +219,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `BOOK_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `BOOK_ID` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `cars`
 --
 ALTER TABLE `cars`
-  MODIFY `CAR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `CAR_ID` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `FED_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `FED_ID` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `PAY_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `PAY_ID` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Constraints for dumped tables
@@ -287,3 +289,19 @@ CREATE TABLE master_spareparts (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (supplier_id) REFERENCES suppliers(supplier_id) ON DELETE SET NULL
 );
+
+CREATE TABLE fuel_type (
+	fuel_id INT AUTO_INCREMENT PRIMARY KEY,
+	fuel_name VARCHAR(255) NOT NULL
+);
+INSERT INTO `carproject`.`fuel_type` (`fuel_name`) VALUES ('Gas'); 
+INSERT INTO `carproject`.`fuel_type` (`fuel_name`) VALUES ('Petrol'); 
+INSERT INTO `carproject`.`fuel_type` (`fuel_name`) VALUES ('Diesel'); 
+INSERT INTO `carproject`.`fuel_type` (`fuel_name`) VALUES ('Solar'); 
+
+
+ALTER TABLE cars
+ADD `CREATED` DATETIME DEFAULT CURRENT_TIMESTAMP AFTER `LATE_CHARGE`,
+ADD `DELETED` DATETIME DEFAULT NULL AFTER `CREATED`;
+
+ALTER TABLE users add nik_photo VARCHAR(255)

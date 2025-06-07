@@ -103,47 +103,10 @@
 </style>
 
 <?php
-require_once('adminnav.php');
+// require_once('adminnav.php');
 require_once('connection.php');
-$query="select *from feedback";
-$queryy=mysqli_query($con,$query);
-$num=mysqli_num_rows($queryy);
+require('protected.php');
+header('location: adminmanagement.php');
 
 
 ?>
-
-    <div class="hai">
-        <div>
-            <h1 class="header">FEEDBACKS</h1>
-            <div>
-                <div>
-                    <table class="content-table">
-                <thead>
-                    <tr>
-                        <th>FEEDBACK_ID</th> 
-                        <th>EMAIL</th>
-                        <th>COMMENT</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php
-                
-                
-                while($res=mysqli_fetch_array($queryy)){
-                
-                
-                ?>
-                <tr  class="active-row">
-                    <td><?php echo $res['FED_ID'];?></php></td>
-                    <td><?php echo $res['EMAIL'];?></php></td>
-                    <td><?php echo $res['COMMENT'];?></php></td>
-                </tr>
-               <?php } ?>
-                </tbody>
-                </table>
-                </div>
-            </div>
-        </div>
-     
-</body>
-</html>

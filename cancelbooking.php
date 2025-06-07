@@ -60,7 +60,7 @@
  <form class="form"  method="POST" >
         <h1>ARE YOU SURE YOU WANT TO CANCEL YOUR BOOKING?</h1>
         <input  type="submit" class="hai" value="CANCEL NOW" name="cancelnow">
-        <button class="no"><a href="payment.php" >GO TO PAYMENT</a></button>
+        <button class="no"><a href="payment.php" >BACK TO PAYMENT</a></button>
     </form>
 </body>
 </html>

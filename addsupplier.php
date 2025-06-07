@@ -159,7 +159,7 @@ input#name{
             <label>Phone Number : </label>
             <br>
             <input type ="text" name="phone_number"
-            id="name" placeholder="Enter Phone Number" required>
+            id="name" placeholder="Enter Phone Number" required maxlength="13">
             <br><br>
 
             <label>Email : </label>
@@ -171,7 +171,7 @@ input#name{
             <label>Address : </label>
             <br>
             <input type ="text" name="address"
-            id="name" placeholder="Enter Contact Name" required>
+            id="name" placeholder="Enter Address" required>
             <br><br>
 
             <input type="submit" class="btnn"  value="ADD Supplier" name="addsupplier">

@@ -1,143 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/2.3.2/js/dataTables.min.js"></script>
+    <link href="https://cdn.datatables.net/2.3.2/css/dataTables.dataTables.min.css" rel="stylesheet">
     <title>Dropdown Navbar</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-        }
-
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #ffffff;
-            padding: 10px 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar-brand {
-            font-size: 20px;
-            font-weight: bold;
-            color: #000;
-        }
-
-        .navbar-nav {
-            display: flex;
-            align-items: center;
-            list-style: none;
-        }
-
-        .navbar-nav li {
-            margin-left: 20px;
-        }
-
-        .navbar-nav a {
-            text-decoration: none;
-            color: #000;
-            font-size: 16px;
-            transition: color 0.3s ease;
-        }
-
-        .navbar-nav a:hover {
-            color: #007bff;
-        }
-
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 4px;
-            z-index: 1000;
-        }
-
-        .dropdown-menu a {
-            display: block;
-            padding: 10px 20px;
-            color: #000;
-            text-decoration: none;
-            font-size: 14px;
-            transition: background-color 0.3s ease;
-        }
-
-        .dropdown-menu a:hover {
-            background-color: #f8f9fa;
-        }
-
-        .dropdown:hover .dropdown-menu {
-            display: block;
-        }
-
-        .search-bar {
-            display: flex;
-            align-items: center;
-        }
-
-        .search-bar input[type="text"] {
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            padding: 5px 10px;
-            font-size: 14px;
-            margin-right: 10px;
-        }
-
-        .search-bar button {
-            background-color: #28a745;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            padding: 5px 15px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .search-bar button:hover {
-            background-color: #218838;
-        }
-    </style>
 </head>
-<body>
 
-    <div class="navbar">
-        <div class="navbar-brand">CARS</div>
-        <ul class="navbar-nav">
-            <li class="dropdown">
-                <a href="#">MASTER &#9662;</a>
-                <div class="dropdown-menu">
-                    <a href="adminvehicle.php">Vehicle</a>
-                    <a href="adminusers.php">Users</a>
-                    <a href="adminmanagement.php">Admin</a>
-                    <a href="adminsupplier.php">Supplier</a>
-                    <a href="adminsparepart.php">Sparepart</a>
+<body>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">CAR RENT</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">CAR RENT</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-            </li>
-            <li><a href="admindash.php">Feedbacks</a></li>
-            <li><a href="adminbook.php">Booking Request</a></li>
-            <li><button class="nn"><a href="index.php">Logout</a></button></li>
-        </ul>
-        <!-- <div class="search-bar">
-            <input type="text" placeholder="Search">
-            <button>Search</button>
-        </div> -->
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="adminfeedbacks.php">Feedbacks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="adminbook.php">Booking Request</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Master
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="adminvehicle.php">Vehicle</a></li>
+                                <li><a class="dropdown-item" href="adminusers.php">Users</a></li>
+                                <li><a class="dropdown-item" href="adminmanagement.php">Admin</a></li>
+                                <li><a class="dropdown-item" href="adminsupplier.php">Supplier</a></li>
+                                <li><a class="dropdown-item" href="adminsparepart.php">Sparepart</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" href="logout.php">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
     </div>
 
 </body>
+
 </html>

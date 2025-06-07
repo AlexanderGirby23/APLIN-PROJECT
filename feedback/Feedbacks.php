@@ -30,7 +30,7 @@ if(isset($_POST['submit'])){
 	$comment=mysqli_real_escape_string($con,$_POST['comment']);
 	$sql="insert into  feedback (EMAIL,COMMENT) values('$email','$comment')";
 	$result = mysqli_query($con,$sql);
-	echo '<script>alert("Feedback Sent Successfully!!THANK YOU!!")</script>';
+	echo '<script>alert("Thanks for your feedback!")</script>';
 	header("Location: ../cardetails.php");
 
 	
@@ -41,7 +41,9 @@ if(isset($_POST['submit'])){
 
 
 ?>
-
+<a href="../cardetails.php" style="
+                    text-decoration: none;
+                    color: #fff;">
 <button class="btn" style="
                         width: 150px;
                         background: orange;
@@ -52,25 +54,27 @@ if(isset($_POST['submit'])){
                         font-size: 18px;
                         margin-left:100px;
 						margin-top:25px;
-                    "><a href="../cardetails.php" style="
-                    text-decoration: none;
-                    color: #fff;">Go To Home</a></button>	
+                    ">Go To Home</button></a>	
 
 <br><br><br>
 	<div id="form">	
 		
-		<div class="col-md-12" id ="mainform">
+		<div class="col-md-12" id ="">
 			<div class="col-sm-6">
-			   <h2  class="contact-us" style="font-size:72px; color:#000;"><strong style="font-size:5cm; color:#555;">F</strong>eedback.</h2>
+			   <h2  class="contact-us" style="font-size:72px; color:#000;"><strong style="font-size:3cm; color:#555;">Feedback</strong></h2>
+			   <h2 class="contact-us">Send your feedback here</h2>
 			</div>
 			<div class="col-sm-6" >
 				<form method="POST">
-				<label><h4>Name:</h4> </label><input type="text" name="name" size="20"  class=" form-control" placeholder="User name" required />
-				<label><h4>Email:</h4></label> <input type="email" name="email" size="20"  class=" form-control" placeholder="User Email" required/>
-				<h4>Comments:</h4><textarea class="form-control"   name="comment" rows="6"  placeholder="Message"  required></textarea>
+				<label><h4>Email:</h4></label> <input type="email" name="email" size="20"  class=" form-control" 
+				placeholder="User Email" required value="<?php echo $email ?>" disabled/>
+				<h4>Comments:</h4><textarea class="form-control"   name="comment" rows="6"  placeholder="Message"  required
+				style="resize: none;"
+				></textarea>
 				<br>
 				<input type="submit" class="btn btn-info" id="btn" style="text-shadow:0 0 3px #000000; font-size:24px;" value="SUBMIT" name="submit">
 				<form>
+				<p>Please write your feedback politely. Your feedback is always appreciated.</p>
 			</div>
 		</div>
 	</div>
