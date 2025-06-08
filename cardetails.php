@@ -263,51 +263,35 @@ ul li a:hover{
             while($result= mysqli_fetch_array($cars))
             {
         ?>    
-    
         <div class="col">
             <form method="POST">
-                    <div class="card" style="height: 30rem">
-                        <img src="images/<?php echo $result['CAR_IMG']?>" class="card-img-top" alt="<?php echo $result['CAR_IMG']?>" style="max-height: 200px;">
-                        <div class="card-body" style="display:flex; justify-content:space-between; flex-direction:column">
-                            <div class="">
+                <div class="card" style="height: 30rem">
+                    <img src="images/<?php echo $result['CAR_IMG']?>" class="card-img-top" alt="<?php echo $result['CAR_IMG']?>" style="max-height: 200px;">
+                    <div class="card-body" style="display:flex; justify-content:space-between; flex-direction:column">
+                        <div class="">
                             <p class="card-text" title="Name of the car to rent">Car Name : <a><?php echo $result['CAR_NAME']?></a></p>
                             <p class="card-text" title="Fuel the car uses">Fuel Type : <a><?php echo $result['FUEL_TYPE']?></a></p>
                             <p class="card-text" title="This includes goods and seat capacity">Capacity : <a><?php echo $result['CAPACITY']?></a> </p>
-                            <p class="card-text" title="Fee to charge per day">Rent Per Day : <a><?php echo $result['PRICE']?>/-</a> </p>
-                            </div>
-                            <div class="">
-                            <a href="">
-                            <button name="details" class="utton" style="margin-top: 5px;" title="Still in development. Do not click!">
-                                Details
-                            </button></a>
+                            <p class="card-text" title="Fee to charge per day">Rent Per Day : <a>Rp <?php echo number_format($result['PRICE'], 0, ',', '.')?>/-</a> </p>
+                        </div>
+                        <div class="">
+                            <a href="car_details_view.php?id=<?php echo $result['CAR_ID'];?>">
+                                <button type="button" name="details" class="utton" style="margin-top: 5px;" title="View detailed information about this car">
+                                    Details
+                                </button>
+                            </a>
                             <a href="booking.php?id=<?php echo $result['CAR_ID'];?>">
-                                <button name="booknow" class="utton" style="margin-top: 5px;" title="Book this rent now">
-                                Book Rent
-                            </button>
+                                <button type="button" name="booknow" class="utton" style="margin-top: 5px;" title="Book this car rental now">
+                                    Book Rent
+                                </button>
                             </a>                                
-                            </div>
-
-
                         </div>
                     </div>
-                <!-- <div class="box">
-                    <div class="imgBx">
-                        <img src="">
-                    </div>
-                    <div class="content">
-                        <?php $res=$result['CAR_ID'];?>
-                        <h1><?php echo $result['CAR_NAME']?></h1>
-                        <h2>Fuel Type : <a><?php echo $result['FUEL_TYPE']?></a> </h2>
-                        <h2>CAPACITY : <a><?php echo $result['CAPACITY']?></a> </h2>
-                        <h2>Rent Per Day : <a>₹<?php echo $result['PRICE']?>/-</a></h2>
-                        <button type="submit"  name="booknow" class="utton" style="margin-top: 5px;"><a href="booking.php?id=<?php echo $res;?>">book</a></button>
-                    </div>
-                </div> -->
+                </div>
             </form>
         </div>
         <?php
             }
-        
         ?>
 
         </div>
