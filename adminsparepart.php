@@ -11,8 +11,6 @@
 <body>
     <?php
     require_once('adminnav.php');
-    require_once('connection.php');
-    require('protected.php');
     $query = "SELECT s.*, sup.supplier_name from master_spareparts s join suppliers sup on s.supplier_id = sup.supplier_id";
     $queryy = mysqli_query($con, $query);
     $num = mysqli_num_rows($queryy);
@@ -30,9 +28,10 @@
                 <thead>
                     <tr>
                         <th>Sparepart Name</th>
+                        <th>Tgl Beli</th>
                         <th>Description</th>
                         <th>Price</th>
-                        <th>Stock</th>
+                        <th>Qty</th>
                         <th>Supplier</th>
                         <th>Action</th>
                     </tr>
@@ -45,6 +44,7 @@
                     ?>
                         <tr class="active-row">
                             <td><?php echo $res['sparepart_name']; ?></td>
+                            <td><?php echo $res['created_at']; ?></td>
                             <td><?php echo $res['description']; ?></td>
                             <td><?php echo $res['price']; ?></td>
                             <td><?php echo $res['stock']; ?></td>

@@ -12,6 +12,11 @@
     <title>Dropdown Navbar</title>
 </head>
 
+<?php
+require_once('connection.php');
+require('protected.php');
+?>
+
 <body>
     <nav class="navbar navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
@@ -27,10 +32,7 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="adminfeedbacks.php">Feedbacks</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="adminbook.php">Booking Request</a>
+                            <a class="nav-link" href="dashboardadmin.php">Dashboard</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -43,6 +45,21 @@
                                 <li><a class="dropdown-item" href="adminsupplier.php">Supplier</a></li>
                                 <li><a class="dropdown-item" href="adminsparepart.php">Sparepart</a></li>
                             </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Report
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="adminpayments.php">Payment Report</a></li>
+                                <li><a class="dropdown-item" href="adminexpense.php">Expense Report</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="adminfeedbacks.php">Feedbacks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="adminbook.php">Booking Request</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-danger" href="logout.php">Logout</a>

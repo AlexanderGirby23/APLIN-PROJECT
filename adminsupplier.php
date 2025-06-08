@@ -11,13 +11,9 @@
 <body>
     <?php
     require_once('adminnav.php');
-    require_once('connection.php');
-    require('protected.php');
     $query = "SELECT *from suppliers";
     $queryy = mysqli_query($con, $query);
     $num = mysqli_num_rows($queryy);
-
-
     ?>
     <script>
         window.onload = () => {

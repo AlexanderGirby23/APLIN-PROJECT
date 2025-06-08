@@ -11,13 +11,9 @@
 <body>
     <?php
     require_once('adminnav.php');
-    require_once('connection.php');
-    require('protected.php');
     $query = "select * from users";
     $queryy = mysqli_query($con, $query);
     $num = mysqli_num_rows($queryy);
-
-
     ?>
     <div class="container" style="margin-top: 100px;">
         <h1 style="text-align: center; margin: 1rem 0">USERS</h1>
@@ -37,11 +33,7 @@
                 </thead>
                 <tbody>
                     <?php
-
-
                     while ($res = mysqli_fetch_array($queryy)) {
-
-
                     ?>
                         <tr class="active-row">
                             <td><?php echo $res['FNAME'] . "  " . $res['LNAME']; ?></php>

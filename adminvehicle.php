@@ -11,9 +11,7 @@
 <body>
 
     <?php
-    require_once('connection.php');
     require_once('adminnav.php');
-    require('protected.php');
     $query = "SELECT *from cars where deleted is null";
     $queryy = mysqli_query($con, $query);
     $num = mysqli_num_rows($queryy);

@@ -11,8 +11,6 @@
 <body>
     <?php
     require_once('adminnav.php');
-    require_once('connection.php');
-    require('protected.php');
     $query = "SELECT *from booking ORDER BY BOOK_ID DESC";
     $queryy = mysqli_query($con, $query);
 
