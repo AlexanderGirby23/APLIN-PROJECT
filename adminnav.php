@@ -34,6 +34,9 @@ require('protected.php');
                         <li class="nav-item">
                             <a class="nav-link" href="dashboardadmin.php">Dashboard</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="adminpayments.php">Payment Report</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Master
