@@ -62,7 +62,7 @@ require_once('connection.php');
             }
 
             // cek user
-            $query="select * from users where EMAIL='$email'";
+            $query="select * from users where EMAIL='$email' and deleted is null";
             $res=mysqli_query($con,$query);
             if($row=mysqli_fetch_assoc($res)){
                 $db_password = $row['PASSWORD'];

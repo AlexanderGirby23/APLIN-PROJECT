@@ -21,14 +21,14 @@
             <table id="example" class="display">
                 <thead>
                     <tr>
-                        <th>NAME</th>
-                        <th>EMAIL</th>
-                        <th>DOMICILE</th>
+                        <th>Name</th>
+                        <th>E-Mail</th>
+                        <th>Domicile</th>
                         <th>NIK</th>
-                        <th>PHONE NUMBER</th>
-                        <th>GENDER</th>
+                        <th>Phone</th>
+                        <th>Gender</th>
                         <th>Password</th>
-                        <th>DELETE USERS</th>
+                        <th>Delete User</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,7 +50,13 @@
                             </td>
                             <td><?php echo  $res['PASSWORD']; ?></php>
                             </td>
-                            <td><a class="btn btn-danger" href="deleteuser.php?id=<?php echo $res['EMAIL'] ?>">DELETE USER</a></td>
+                            <td>
+                                <?php if ($res['deleted']): ?>
+                                    <p class="text-danger">Deleted at <?=$res['deleted']?></p>
+                                <?php else: ?>
+                                    <a class="btn btn-danger" href="deleteuser.php?id=<?php echo $res['EMAIL'] ?>">Delete User</a>
+                                <?php endif; ?>
+                            </td>
                         </tr>
                     <?php } ?>
                 </tbody>

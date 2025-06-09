@@ -98,7 +98,8 @@ if(isset($_POST['regs']))
         if(mysqli_num_rows($res)>0){
             $sql="update users 
             set PASSWORD = '$Pass'
-            where EMAIL = '$email'";
+            where EMAIL = '$email'
+            and deleted is null";
             $result = mysqli_query($con,$sql);
             if($result){
                 echo '<script>alert("Password successfully reset and changed!")</script>';

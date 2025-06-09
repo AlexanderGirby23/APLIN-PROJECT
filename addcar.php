@@ -176,10 +176,10 @@ input#name, select{
             id="name" placeholder="Enter Capacity Of Car" required>
             <br><br>
             
-            <label>Price : </label>
+            <label>Charge per Day : </label>
             <br>
             <input type="number" name="price" min="1"
-            id="name" placeholder="Enter Price Of Car for One Day" required>
+            id="name" placeholder="Charged each day" required>
             <br><br>
 
             <label>Car Image : </label>
@@ -190,7 +190,7 @@ input#name, select{
             <label>Late Charge : </label>
             <br>
             <input type="number" name="late" min="1"
-            id="name" placeholder="Enter Price Of Late Car for One Day" required>
+            id="name" placeholder="Additional charge if late (charged every extra day)" required>
             <br><br>
 
             <input type="submit" class="btnn"  value="ADD CAR" name="addcar">
