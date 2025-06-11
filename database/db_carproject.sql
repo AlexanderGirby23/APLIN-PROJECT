@@ -14,13 +14,16 @@ MySQL - 8.0.30 : Database - carproject
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 /*Table structure for table `admin` */
 
+CREATE DATABASE carproject;
+use carproject;
+
 DROP TABLE IF EXISTS `admin`;
 
 CREATE TABLE `admin` (
   `ADMIN_ID` varchar(255) NOT NULL,
   `ADMIN_PASSWORD` varchar(255) NOT NULL,
   PRIMARY KEY (`ADMIN_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `admin` */
 
@@ -56,7 +59,7 @@ CREATE TABLE `booking` (
   KEY `EMAIL` (`EMAIL`),
   CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`CAR_ID`) REFERENCES `cars` (`CAR_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `booking_ibfk_2` FOREIGN KEY (`EMAIL`) REFERENCES `users` (`EMAIL`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `booking` */
 
@@ -97,7 +100,7 @@ CREATE TABLE `car_returns` (
   KEY `STATUS` (`STATUS`),
   KEY `RETURN_DATE` (`RETURN_DATE`),
   CONSTRAINT `car_returns_ibfk_1` FOREIGN KEY (`BOOK_ID`) REFERENCES `booking` (`BOOK_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `car_returns` */
 
@@ -117,7 +120,7 @@ CREATE TABLE `cars` (
   `CREATED` datetime DEFAULT CURRENT_TIMESTAMP,
   `DELETED` datetime DEFAULT NULL,
   PRIMARY KEY (`CAR_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `cars` */
 
@@ -138,7 +141,7 @@ CREATE TABLE `feedback` (
   PRIMARY KEY (`FED_ID`),
   KEY `TEST` (`EMAIL`),
   CONSTRAINT `TEST` FOREIGN KEY (`EMAIL`) REFERENCES `users` (`EMAIL`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `feedback` */
 
@@ -153,7 +156,7 @@ CREATE TABLE `fuel_type` (
   `fuel_id` int NOT NULL AUTO_INCREMENT,
   `fuel_name` varchar(255) NOT NULL,
   PRIMARY KEY (`fuel_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `fuel_type` */
 
@@ -179,7 +182,7 @@ CREATE TABLE `master_spareparts` (
   PRIMARY KEY (`sparepart_id`),
   KEY `supplier_id` (`supplier_id`),
   CONSTRAINT `master_spareparts_ibfk_1` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`supplier_id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `master_spareparts` */
 
@@ -201,7 +204,7 @@ CREATE TABLE `payment` (
   PRIMARY KEY (`PAY_ID`),
   UNIQUE KEY `BOOK_ID` (`BOOK_ID`),
   CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`BOOK_ID`) REFERENCES `booking` (`BOOK_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `payment` */
 
@@ -221,7 +224,7 @@ CREATE TABLE `suppliers` (
   `address` text,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`supplier_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `suppliers` */
 
@@ -241,7 +244,7 @@ CREATE TABLE `users` (
   `nik_photo` varchar(255) DEFAULT NULL,
   `DELETED` datetime DEFAULT NULL,
   PRIMARY KEY (`EMAIL`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `users` */
 
