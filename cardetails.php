@@ -275,11 +275,11 @@ ul li a:hover{
                             <p class="card-text" title="Fee to charge per day">Rent Per Day : <a>Rp <?php echo number_format($result['PRICE'], 0, ',', '.')?>/-</a> </p>
                         </div>
                         <div class="">
-                            <a href="car_details_view.php?id=<?php echo $result['CAR_ID'];?>">
+                            <!-- <a href="car_details_view.php?id=<?php echo $result['CAR_ID'];?>">
                                 <button type="button" name="details" class="utton" style="margin-top: 5px;" title="View detailed information about this car">
                                     Details
                                 </button>
-                            </a>
+                            </a> -->
                             <a href="booking.php?id=<?php echo $result['CAR_ID'];?>">
                                 <button type="button" name="booknow" class="utton" style="margin-top: 5px;" title="Book this car rental now">
                                     Book Rent

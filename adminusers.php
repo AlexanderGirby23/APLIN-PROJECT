@@ -51,8 +51,8 @@
                             <td><?php echo  $res['PASSWORD']; ?></php>
                             </td>
                             <td>
-                                <?php if ($res['deleted']): ?>
-                                    <p class="text-danger">Deleted at <?=$res['deleted']?></p>
+                                <?php if ($res['DELETED']): ?>
+                                    <p class="text-danger">Deleted at <?=$res['DELETED']?></p>
                                 <?php else: ?>
                                     <a class="btn btn-danger" href="deleteuser.php?id=<?php echo $res['EMAIL'] ?>">Delete User</a>
                                 <?php endif; ?>
